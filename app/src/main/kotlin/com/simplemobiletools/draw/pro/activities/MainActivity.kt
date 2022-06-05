@@ -90,7 +90,7 @@ class MainActivity : SimpleActivity(), CanvasListener {
         updateBrushSize()
         stroke_width_bar.progress = brushSize.toInt()
 
-        color_picker.setOnClickListener { pickColor() }
+        stroke_width_preview.setOnClickListener { pickColor() }
         undo.setOnClickListener { my_canvas.undo() }
         eraser.setOnClickListener { eraserClicked() }
         eraser.setOnLongClickListener {
@@ -586,7 +586,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
 
     private fun setColor(pickedColor: Int) {
         color = pickedColor
-        color_picker.setFillWithStroke(color, config.canvasBackgroundColor, true)
         my_canvas.setColor(color)
         isEraserOn = false
         updateEraserState()
