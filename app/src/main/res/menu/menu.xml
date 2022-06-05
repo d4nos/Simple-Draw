@@ -12,11 +12,6 @@
         android:title="@string/save"
         app:showAsAction="always" />
     <item
-        android:id="@+id/clear"
-        android:icon="@drawable/ic_clear_vector"
-        android:title="@string/clear"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/menu_share"
         android:icon="@drawable/ic_share_vector"
         android:title="@string/share"
@@ -31,19 +26,4 @@
         android:showAsAction="never"
         android:title="@string/change_background_color"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_print"
-        android:showAsAction="never"
-        android:title="@string/print"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/settings"
-        android:icon="@drawable/ic_settings_cog_vector"
-        android:title="@string/settings"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/about"
-        android:icon="@drawable/ic_info_vector"
-        android:title="@string/about"
-        app:showAsAction="ifRoom" />
 </menu>

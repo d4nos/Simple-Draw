@@ -91,6 +91,7 @@ class MainActivity : SimpleActivity(), CanvasListener {
         stroke_width_bar.progress = brushSize.toInt()
 
         stroke_width_preview.setOnClickListener { pickColor() }
+        clear.setOnClickListener { clearCanvas() }
         undo.setOnClickListener { my_canvas.undo() }
         eraser.setOnClickListener { eraserClicked() }
         eraser.setOnLongClickListener {
@@ -163,12 +164,8 @@ class MainActivity : SimpleActivity(), CanvasListener {
             R.id.menu_confirm -> confirmImage()
             R.id.menu_save -> trySaveImage()
             R.id.menu_share -> shareImage()
-            R.id.clear -> clearCanvas()
             R.id.open_file -> tryOpenFile()
             R.id.change_background -> changeBackgroundClicked()
-            R.id.menu_print -> printImage()
-            R.id.settings -> launchSettings()
-            R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -188,25 +185,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
         } else {
             super.onBackPressed()
         }
-    }
-
-    private fun launchSettings() {
-        hideKeyboard()
-        startActivity(Intent(applicationContext, SettingsActivity::class.java))
-    }
-
-    private fun launchAbout() {
-        val licenses = LICENSE_GLIDE
-
-        val faqItems = ArrayList<FAQItem>()
-
-        if (!resources.getBoolean(R.bool.hide_google_relations)) {
-            faqItems.add(FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons))
-            faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
-            faqItems.add(FAQItem(R.string.faq_7_title_commons, R.string.faq_7_text_commons))
-        }
-
-        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, false)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -640,16 +618,6 @@ class MainActivity : SimpleActivity(), CanvasListener {
         val scale = Math.max(0.03f, brushSize / 100f)
         stroke_width_preview.scaleX = scale
         stroke_width_preview.scaleY = scale
-    }
-
-    private fun printImage() {
-        val printHelper = PrintHelper(this)
-        printHelper.scaleMode = PrintHelper.SCALE_MODE_FIT
-        try {
-            printHelper.printBitmap(getString(R.string.app_name), my_canvas.getBitmap())
-        } catch (e: Exception) {
-            showErrorToast(e)
-        }
     }
 
     private fun checkWhatsNewDialog() {
