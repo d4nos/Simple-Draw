@@ -37,7 +37,6 @@ import com.simplemobiletools.commons.dialogs.WritePermissionDialog.Mode
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.interfaces.CopyMoveListener
-import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.FileDirItem
 import java.io.File
 import java.io.OutputStream
@@ -76,14 +75,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
-        if (!packageName.startsWith("com.simplemobiletools.", true)) {
-            if ((0..50).random() == 10 || baseConfig.appRunCount % 100 == 0) {
-                val label = "You are using a fake version of the app. For your own safety download the original one from www.simplemobiletools.com. Thanks"
-                ConfirmationDialog(this, label, positive = R.string.ok, negative = 0) {
-                    launchViewIntent("https://play.google.com/store/apps/dev?id=9070296388022589266")
-                }
-            }
-        }
+
     }
 
     override fun onResume() {
@@ -431,31 +423,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
         }
     }
 
-    fun startAboutActivity(appNameId: Int, licenseMask: Int, versionName: String, faqItems: ArrayList<FAQItem>, showFAQBeforeMail: Boolean) {
-        hideKeyboard()
-        Intent(applicationContext, AboutActivity::class.java).apply {
-            putExtra(APP_ICON_IDS, getAppIconIDs())
-            putExtra(APP_LAUNCHER_NAME, getAppLauncherName())
-            putExtra(APP_NAME, getString(appNameId))
-            putExtra(APP_LICENSES, licenseMask)
-            putExtra(APP_VERSION_NAME, versionName)
-            putExtra(APP_FAQ, faqItems)
-            putExtra(SHOW_FAQ_BEFORE_MAIL, showFAQBeforeMail)
-            startActivity(this)
-        }
-    }
-
     fun startCustomizationActivity() {
-        if (!packageName.contains("slootelibomelpmis".reversed(), true)) {
-            if (baseConfig.appRunCount > 100) {
-                val label = "You are using a fake version of the app. For your own safety download the original one from www.simplemobiletools.com. Thanks"
-                ConfirmationDialog(this, label, positive = R.string.ok, negative = 0) {
-                    launchViewIntent("https://play.google.com/store/apps/dev?id=9070296388022589266")
-                }
-                return
-            }
-        }
-
         Intent(applicationContext, CustomizationActivity::class.java).apply {
             putExtra(APP_ICON_IDS, getAppIconIDs())
             putExtra(APP_LAUNCHER_NAME, getAppLauncherName())
@@ -464,11 +432,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
     }
 
     fun handleCustomizeColorsClick() {
-        if (isOrWasThankYouInstalled()) {
-            startCustomizationActivity()
-        } else {
-            launchPurchaseThankYouIntent()
-        }
+        startCustomizationActivity()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -482,10 +446,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
     // synchronous return value determines only if we are showing the SAF dialog, callback result tells if the SD or OTG permission has been granted
     fun handleSAFDialog(path: String, callback: (success: Boolean) -> Unit): Boolean {
         hideKeyboard()
-        return if (!packageName.startsWith("com.simplemobiletools")) {
-            callback(true)
-            false
-        } else if (isShowingSAFDialog(path) || isShowingOTGDialog(path)) {
+        return if (isShowingSAFDialog(path) || isShowingOTGDialog(path)) {
             funAfterSAFPermission = callback
             true
         } else {
@@ -496,10 +457,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
 
     fun handleSAFDialogSdk30(path: String, callback: (success: Boolean) -> Unit): Boolean {
         hideKeyboard()
-        return if (!packageName.startsWith("com.simplemobiletools")) {
-            callback(true)
-            false
-        } else if (isShowingSAFDialogSdk30(path)) {
+        return if (isShowingSAFDialogSdk30(path)) {
             funAfterSdk30Action = callback
             true
         } else {
@@ -520,10 +478,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
 
     fun handleSAFCreateDocumentDialogSdk30(path: String, callback: (success: Boolean) -> Unit): Boolean {
         hideKeyboard()
-        return if (!packageName.startsWith("com.simplemobiletools")) {
-            callback(true)
-            false
-        } else if (isShowingSAFCreateDocumentDialogSdk30(path)) {
+        return if (isShowingSAFCreateDocumentDialogSdk30(path)) {
             funAfterSdk30Action = callback
             true
         } else {
@@ -534,10 +489,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
 
     fun handleAndroidSAFDialog(path: String, callback: (success: Boolean) -> Unit): Boolean {
         hideKeyboard()
-        return if (!packageName.startsWith("com.simplemobiletools")) {
-            callback(true)
-            false
-        } else if (isShowingAndroidSAFDialog(path)) {
+        return  if (isShowingAndroidSAFDialog(path)) {
             funAfterSAFPermission = callback
             true
         } else {
@@ -911,7 +863,7 @@ abstract class BaseSimpleActivity : AppCompatActivity() {
     }
 
     private fun getExportSettingsFilename(): String {
-        val appName = baseConfig.appId.removeSuffix(".debug").removeSuffix(".pro").removePrefix("com.simplemobiletools.")
+        val appName = baseConfig.appId
         return "$appName-settings_${getCurrentFormattedDateTime()}.txt"
     }
 

@@ -109,14 +109,7 @@ fun Context.getDatePickerDialogTheme() = when {
 }
 
 fun Context.getSharedTheme(callback: (sharedTheme: SharedTheme?) -> Unit) {
-    if (!isThankYouInstalled()) {
-        callback(null)
-    } else {
-        val cursorLoader = getMyContentProviderCursorLoader()
-        ensureBackgroundThread {
-            callback(getSharedThemeSync(cursorLoader))
-        }
-    }
+    callback(null)
 }
 
 fun Context.getSharedThemeSync(cursorLoader: CursorLoader): SharedTheme? {

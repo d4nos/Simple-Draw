@@ -103,30 +103,10 @@ fun Activity.appLaunched(appId: String) {
         }
     }
 
-    baseConfig.appRunCount++
-    if (baseConfig.appRunCount % 30 == 0 && !isAProApp()) {
-        if (!resources.getBoolean(R.bool.hide_google_relations)) {
-            showDonateOrUpgradeDialog()
-        }
-    }
-
-    if (baseConfig.appRunCount % 40 == 0 && !baseConfig.wasAppRated) {
-        if (!resources.getBoolean(R.bool.hide_google_relations)) {
-            RateStarsDialog(this)
-        }
-    }
 
     if (baseConfig.navigationBarColor == INVALID_NAVIGATION_BAR_COLOR && (window.attributes.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN == 0)) {
         baseConfig.defaultNavigationBarColor = window.navigationBarColor
         baseConfig.navigationBarColor = window.navigationBarColor
-    }
-}
-
-fun Activity.showDonateOrUpgradeDialog() {
-    if (getCanAppBeUpgraded()) {
-        UpgradeToProDialog(this)
-    } else if (!isOrWasThankYouInstalled()) {
-        DonateDialog(this)
     }
 }
 
@@ -313,22 +293,6 @@ fun BaseSimpleActivity.showOTGPermissionDialog(path: String) {
                 }
             }
         }
-    }
-}
-
-fun Activity.launchPurchaseThankYouIntent() {
-    try {
-        launchViewIntent("market://details?id=com.simplemobiletools.thankyou")
-    } catch (ignored: Exception) {
-        launchViewIntent(getString(R.string.thank_you_url))
-    }
-}
-
-fun Activity.launchUpgradeToProIntent() {
-    try {
-        launchViewIntent("market://details?id=${baseConfig.appId.removeSuffix(".debug")}.pro")
-    } catch (ignored: Exception) {
-        launchViewIntent(getStoreUrl())
     }
 }
 
@@ -620,10 +584,6 @@ fun BaseSimpleActivity.checkWhatsNew(releases: List<Release>, currVersion: Int) 
 
     val newReleases = arrayListOf<Release>()
     releases.filterTo(newReleases) { it.id > baseConfig.lastVersion }
-
-    if (newReleases.isNotEmpty()) {
-        WhatsNewDialog(this, newReleases)
-    }
 
     baseConfig.lastVersion = currVersion
 }

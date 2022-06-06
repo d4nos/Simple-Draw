@@ -32,31 +32,6 @@ abstract class BaseSplashActivity : AppCompatActivity() {
                 navigationBarColor = if (isUsingSystemDarkTheme) Color.BLACK else -2
             }
         }
-
-        if (!baseConfig.isUsingAutoTheme && !baseConfig.isUsingSystemTheme && isThankYouInstalled()) {
-            getSharedTheme {
-                if (it != null) {
-                    baseConfig.apply {
-                        wasSharedThemeForced = true
-                        isUsingSharedTheme = true
-                        wasSharedThemeEverActivated = true
-
-                        textColor = it.textColor
-                        backgroundColor = it.backgroundColor
-                        primaryColor = it.primaryColor
-                        navigationBarColor = it.navigationBarColor
-                        accentColor = it.accentColor
-                    }
-
-                    if (baseConfig.appIconColor != it.appIconColor) {
-                        baseConfig.appIconColor = it.appIconColor
-                        checkAppIconColor()
-                    }
-                }
-                initActivity()
-            }
-        } else {
-            initActivity()
-        }
+        initActivity()
     }
 }

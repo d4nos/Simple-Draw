@@ -16,15 +16,12 @@ import android.view.WindowManager
 import android.webkit.MimeTypeMap
 import android.widget.SeekBar
 import android.widget.Toast
-import androidx.print.PrintHelper
 import com.simplemobiletools.commons.dialogs.ColorPickerDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationAdvancedDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.LICENSE_GLIDE
 import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_STORAGE
 import com.simplemobiletools.commons.helpers.SAVE_DISCARD_PROMPT_INTERVAL
 import com.simplemobiletools.commons.helpers.isQPlus
-import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.FileDirItem
 import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.draw.pro.BuildConfig
