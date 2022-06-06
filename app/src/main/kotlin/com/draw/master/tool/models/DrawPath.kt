@@ -4,17 +4,17 @@ import android.app.Activity
 import android.graphics.Path
 import com.simplemobiletools.commons.extensions.toast
 import com.draw.master.tool.R
-import com.draw.master.tool.actions.Action
-import com.draw.master.tool.actions.Line
-import com.draw.master.tool.actions.Move
-import com.draw.master.tool.actions.Quad
+import com.draw.master.tool.a.Action
+import com.draw.master.tool.a.Line
+import com.draw.master.tool.a.Move
+import com.draw.master.tool.a.Quad
 import java.io.ObjectInputStream
 import java.io.Serializable
 import java.security.InvalidParameterException
 import java.util.*
 
 // https://stackoverflow.com/a/8127953
-class MyPath : Path(), Serializable {
+class DrawPath : Path(), Serializable {
     val actions = LinkedList<Action>()
 
     private fun readObject(inputStream: ObjectInputStream) {

@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.draw.master.tool.activities.SplashActivity"
+            android:name="com.draw.master.tool.act.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -35,7 +35,7 @@
         </activity>
 
         <activity
-            android:name="com.draw.master.tool.activities.MainActivity"
+            android:name="com.draw.master.tool.act.MainActivity"
             android:configChanges="orientation"
             android:exported="true">
             <intent-filter>
@@ -72,10 +72,10 @@
         </activity>
 
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".act.SettingsActivity"
             android:exported="true"
             android:label="@string/settings"
-            android:parentActivityName="com.draw.master.tool.activities.MainActivity">
+            android:parentActivityName="com.draw.master.tool.act.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
@@ -87,7 +87,7 @@
             android:name="com.simplemobiletools.commons.activities.AboutActivity"
             android:exported="false"
             android:label="@string/about"
-            android:parentActivityName="com.draw.master.tool.activities.MainActivity" />
+            android:parentActivityName="com.draw.master.tool.act.MainActivity" />
 
         <activity
             android:name="com.simplemobiletools.commons.activities.LicenseActivity"
@@ -99,7 +99,7 @@
             android:name="com.simplemobiletools.commons.activities.CustomizationActivity"
             android:exported="false"
             android:label="@string/customize_colors"
-            android:parentActivityName=".activities.SettingsActivity" />
+            android:parentActivityName=".act.SettingsActivity" />
 
         <activity
             android:name="com.simplemobiletools.commons.activities.FAQActivity"

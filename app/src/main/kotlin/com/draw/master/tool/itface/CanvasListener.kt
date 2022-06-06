@@ -1,4 +1,4 @@
-package com.draw.master.tool.interfaces
+package com.draw.master.tool.itface
 
 interface CanvasListener {
     fun toggleUndoVisibility(visible: Boolean)

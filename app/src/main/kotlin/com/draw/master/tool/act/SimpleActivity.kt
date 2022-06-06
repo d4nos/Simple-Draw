@@ -1,4 +1,4 @@
-package com.draw.master.tool.activities
+package com.draw.master.tool.act
 
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.draw.master.tool.R

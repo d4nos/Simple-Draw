@@ -16,29 +16,29 @@ import com.bumptech.glide.request.RequestOptions
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.draw.master.tool.R
-import com.draw.master.tool.interfaces.CanvasListener
+import com.draw.master.tool.itface.CanvasListener
 import com.draw.master.tool.models.MyParcelable
-import com.draw.master.tool.models.MyPath
+import com.draw.master.tool.models.DrawPath
 import com.draw.master.tool.models.PaintOptions
 import java.util.concurrent.ExecutionException
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
-class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class DrawCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val MIN_ERASER_WIDTH = 20f
     private val mScaledTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
 
-    var mPaths = LinkedHashMap<MyPath, PaintOptions>()
+    var mPaths = LinkedHashMap<DrawPath, PaintOptions>()
     var mBackgroundBitmap: Bitmap? = null
     var mListener: CanvasListener? = null
 
-    private var mLastPaths = LinkedHashMap<MyPath, PaintOptions>()
-    private var mUndonePaths = LinkedHashMap<MyPath, PaintOptions>()
+    private var mLastPaths = LinkedHashMap<DrawPath, PaintOptions>()
+    private var mUndonePaths = LinkedHashMap<DrawPath, PaintOptions>()
     private var mLastBackgroundBitmap: Bitmap? = null
 
     private var mPaint = Paint()
-    private var mPath = MyPath()
+    private var mPath = DrawPath()
     private var mPaintOptions = PaintOptions()
 
     private var mCurX = 0f
@@ -224,7 +224,7 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     fun undo() {
         if (mPaths.isEmpty() && mLastPaths.isNotEmpty()) {
-            mPaths = mLastPaths.clone() as LinkedHashMap<MyPath, PaintOptions>
+            mPaths = mLastPaths.clone() as LinkedHashMap<DrawPath, PaintOptions>
             mBackgroundBitmap = mLastBackgroundBitmap
             mLastPaths.clear()
             pathsUpdated()
@@ -323,7 +323,7 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
         }
     }
 
-    fun addPath(path: MyPath, options: PaintOptions) {
+    fun addPath(path: DrawPath, options: PaintOptions) {
         mPaths[path] = options
         pathsUpdated()
     }
@@ -337,7 +337,7 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     fun clearCanvas() {
-        mLastPaths = mPaths.clone() as LinkedHashMap<MyPath, PaintOptions>
+        mLastPaths = mPaths.clone() as LinkedHashMap<DrawPath, PaintOptions>
         mLastBackgroundBitmap = mBackgroundBitmap
         mBackgroundBitmap = null
         mPath.reset()
@@ -373,7 +373,7 @@ class MyCanvas(context: Context, attrs: AttributeSet) : View(context, attrs) {
         }
 
         pathsUpdated()
-        mPath = MyPath()
+        mPath = DrawPath()
         mPaintOptions = PaintOptions(mPaintOptions.color, mPaintOptions.strokeWidth, mPaintOptions.isEraser)
     }
 

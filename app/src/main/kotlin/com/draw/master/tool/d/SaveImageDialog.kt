@@ -1,14 +1,14 @@
-package com.draw.master.tool.dialogs
+package com.draw.master.tool.d
 
 import androidx.appcompat.app.AlertDialog
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.draw.master.tool.R
-import com.draw.master.tool.activities.SimpleActivity
-import com.draw.master.tool.helpers.JPG
-import com.draw.master.tool.helpers.PNG
-import com.draw.master.tool.helpers.SVG
+import com.draw.master.tool.act.SimpleActivity
+import com.draw.master.tool.h.JPG
+import com.draw.master.tool.h.PNG
+import com.draw.master.tool.h.SVG
 import kotlinx.android.synthetic.main.dialog_save_image.view.*
 import java.io.File
 

@@ -10,20 +10,20 @@ import com.simplemobiletools.commons.extensions.getFilenameFromPath
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.models.FileDirItem
 import com.draw.master.tool.R
-import com.draw.master.tool.activities.MainActivity
-import com.draw.master.tool.activities.SimpleActivity
-import com.draw.master.tool.views.MyCanvas
+import com.draw.master.tool.act.MainActivity
+import com.draw.master.tool.act.SimpleActivity
+import com.draw.master.tool.views.DrawCanvas
 import java.io.*
 import java.util.*
 
 object Svg {
-    fun saveSvg(activity: SimpleActivity, path: String, canvas: MyCanvas) {
+    fun saveSvg(activity: SimpleActivity, path: String, canvas: DrawCanvas) {
         activity.getFileOutputStream(FileDirItem(path, path.getFilenameFromPath()), true) {
             saveToOutputStream(activity, it, canvas)
         }
     }
 
-    fun saveToOutputStream(activity: SimpleActivity, outputStream: OutputStream?, canvas: MyCanvas) {
+    fun saveToOutputStream(activity: SimpleActivity, outputStream: OutputStream?, canvas: DrawCanvas) {
         if (outputStream != null) {
             val backgroundColor = (canvas.background as ColorDrawable).color
             val writer = BufferedWriter(OutputStreamWriter(outputStream))
@@ -35,7 +35,7 @@ object Svg {
         }
     }
 
-    private fun writeSvg(writer: Writer, backgroundColor: Int, paths: Map<MyPath, PaintOptions>, width: Int, height: Int) {
+    private fun writeSvg(writer: Writer, backgroundColor: Int, paths: Map<DrawPath, PaintOptions>, width: Int, height: Int) {
         writer.apply {
             write("<svg width=\"$width\" height=\"$height\" xmlns=\"http://www.w3.org/2000/svg\">")
             write("<rect width=\"$width\" height=\"$height\" fill=\"#${Integer.toHexString(backgroundColor).substring(2)}\"/>")
@@ -47,7 +47,7 @@ object Svg {
         }
     }
 
-    private fun writePath(writer: Writer, path: MyPath, options: PaintOptions) {
+    private fun writePath(writer: Writer, path: DrawPath, options: PaintOptions) {
         writer.apply {
             write("<path d=\"")
             path.actions.forEach {
@@ -63,14 +63,14 @@ object Svg {
         }
     }
 
-    fun loadSvg(activity: MainActivity, fileOrUri: Any, canvas: MyCanvas) {
+    fun loadSvg(activity: MainActivity, fileOrUri: Any, canvas: DrawCanvas) {
         val svg = parseSvg(activity, fileOrUri)
 
         canvas.clearCanvas()
         activity.setBackgroundColor(svg.background!!.color)
 
         svg.paths.forEach {
-            val path = MyPath()
+            val path = DrawPath()
             path.readObject(it.data, activity)
             val options = PaintOptions(it.color, it.strokeWidth, it.isEraser)
 

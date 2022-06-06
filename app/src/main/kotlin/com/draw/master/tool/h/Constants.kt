@@ -1,4 +1,4 @@
-package com.draw.master.tool.helpers
+package com.draw.master.tool.h
 
 const val BRUSH_COLOR = "brush_color"
 const val CANVAS_BACKGROUND_COLOR = "canvas_background_color"

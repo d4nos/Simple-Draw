@@ -1,4 +1,4 @@
-package com.draw.master.tool.activities
+package com.draw.master.tool.act
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -23,16 +23,15 @@ import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_STORAGE
 import com.simplemobiletools.commons.helpers.SAVE_DISCARD_PROMPT_INTERVAL
 import com.simplemobiletools.commons.helpers.isQPlus
 import com.simplemobiletools.commons.models.FileDirItem
-import com.simplemobiletools.commons.models.Release
 import com.draw.master.tool.BuildConfig
 import com.draw.master.tool.R
-import com.draw.master.tool.dialogs.SaveImageDialog
-import com.draw.master.tool.extensions.config
-import com.draw.master.tool.helpers.EyeDropper
-import com.draw.master.tool.helpers.JPG
-import com.draw.master.tool.helpers.PNG
-import com.draw.master.tool.helpers.SVG
-import com.draw.master.tool.interfaces.CanvasListener
+import com.draw.master.tool.d.SaveImageDialog
+import com.draw.master.tool.ext.config
+import com.draw.master.tool.h.EyeDropper
+import com.draw.master.tool.h.JPG
+import com.draw.master.tool.h.PNG
+import com.draw.master.tool.h.SVG
+import com.draw.master.tool.itface.CanvasListener
 import com.draw.master.tool.models.Svg
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
@@ -44,7 +43,7 @@ class MainActivity : SimpleActivity(), CanvasListener {
     private val SAVE_IMAGE_INTENT = 2
 
     private val FOLDER_NAME = "images"
-    private val FILE_NAME = "simple-draw.png"
+    private val FILE_NAME = "my_draw.png"
     private val BITMAP_PATH = "bitmap_path"
     private val URI_TO_LOAD = "uri_to_load"
 
@@ -321,9 +320,9 @@ class MainActivity : SimpleActivity(), CanvasListener {
 
     private fun updateEraserState() {
         val iconId = if (isEraserOn) {
-            R.drawable.ic_eraser_off_vector
+            R.drawable.ic_eraser_off
         } else {
-            R.drawable.ic_eraser_on_vector
+            R.drawable.ic_eraser_on
         }
 
         eraser.setImageResource(iconId)
@@ -357,9 +356,9 @@ class MainActivity : SimpleActivity(), CanvasListener {
         }
 
         val iconId = if (isEyeDropperOn) {
-            R.drawable.ic_colorize_off_vector
+            R.drawable.ic_colorize_off
         } else {
-            R.drawable.ic_colorize_on_vector
+            R.drawable.ic_colorize_on
         }
 
         eye_dropper.setImageResource(iconId)

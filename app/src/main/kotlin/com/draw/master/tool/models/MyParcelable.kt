@@ -6,14 +6,14 @@ import android.view.View
 import java.util.*
 
 internal class MyParcelable : View.BaseSavedState {
-    var paths = LinkedHashMap<MyPath, PaintOptions>()
+    var paths = LinkedHashMap<DrawPath, PaintOptions>()
 
     constructor(superState: Parcelable) : super(superState)
 
     constructor(parcel: Parcel) : super(parcel) {
         val size = parcel.readInt()
         for (i in 0 until size) {
-            val key = parcel.readSerializable() as MyPath
+            val key = parcel.readSerializable() as DrawPath
             val paintOptions = PaintOptions(parcel.readInt(), parcel.readFloat(), parcel.readInt() == 1)
             paths[key] = paintOptions
         }

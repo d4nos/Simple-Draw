@@ -1,4 +1,4 @@
-package com.draw.master.tool.activities
+package com.draw.master.tool.act
 
 import android.content.Intent
 import android.os.Handler
