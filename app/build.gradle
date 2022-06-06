@@ -2,12 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-def keystoreProperties = new Properties()
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
-
 android {
     compileSdkVersion 31
 
@@ -15,33 +9,29 @@ android {
         applicationId "com.draw.master.tool"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 70
-        versionName "6.6.0"
+        versionCode 11100
+        versionName "1.1.100"
         setProperty("archivesBaseName", "draw")
         vectorDrawables.useSupportLibrary = true
     }
 
     signingConfigs {
-	if (keystorePropertiesFile.exists()) {
-            release {
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-                storeFile file(keystoreProperties['storeFile'])
-                storePassword keystoreProperties['storePassword']
-            }
+        config {
+            keyAlias 'drawmaster'
+            keyPassword 'draw@412412@3#@1'
+            storeFile file('./keystore/keystore.jks')
+            storePassword 'draw@412412@3#@1'
         }
     }
 
     buildTypes {
         debug {
-	        applicationIdSuffix ".debug"
+            applicationIdSuffix ".debug"
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            if (keystorePropertiesFile.exists()) {
-                signingConfig signingConfigs.release
-            }
+            signingConfig signingConfigs.config
         }
     }
 
