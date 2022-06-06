@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.activities
+package com.draw.master.tool.activities
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -24,16 +24,16 @@ import com.simplemobiletools.commons.helpers.SAVE_DISCARD_PROMPT_INTERVAL
 import com.simplemobiletools.commons.helpers.isQPlus
 import com.simplemobiletools.commons.models.FileDirItem
 import com.simplemobiletools.commons.models.Release
-import com.simplemobiletools.draw.pro.BuildConfig
-import com.simplemobiletools.draw.pro.R
-import com.simplemobiletools.draw.pro.dialogs.SaveImageDialog
-import com.simplemobiletools.draw.pro.extensions.config
-import com.simplemobiletools.draw.pro.helpers.EyeDropper
-import com.simplemobiletools.draw.pro.helpers.JPG
-import com.simplemobiletools.draw.pro.helpers.PNG
-import com.simplemobiletools.draw.pro.helpers.SVG
-import com.simplemobiletools.draw.pro.interfaces.CanvasListener
-import com.simplemobiletools.draw.pro.models.Svg
+import com.draw.master.tool.BuildConfig
+import com.draw.master.tool.R
+import com.draw.master.tool.dialogs.SaveImageDialog
+import com.draw.master.tool.extensions.config
+import com.draw.master.tool.helpers.EyeDropper
+import com.draw.master.tool.helpers.JPG
+import com.draw.master.tool.helpers.PNG
+import com.draw.master.tool.helpers.SVG
+import com.draw.master.tool.interfaces.CanvasListener
+import com.draw.master.tool.models.Svg
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.File

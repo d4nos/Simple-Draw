@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.views
+package com.draw.master.tool.views
 
 import android.app.Activity
 import android.content.Context
@@ -15,11 +15,11 @@ import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.request.RequestOptions
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.draw.pro.R
-import com.simplemobiletools.draw.pro.interfaces.CanvasListener
-import com.simplemobiletools.draw.pro.models.MyParcelable
-import com.simplemobiletools.draw.pro.models.MyPath
-import com.simplemobiletools.draw.pro.models.PaintOptions
+import com.draw.master.tool.R
+import com.draw.master.tool.interfaces.CanvasListener
+import com.draw.master.tool.models.MyParcelable
+import com.draw.master.tool.models.MyPath
+import com.draw.master.tool.models.PaintOptions
 import java.util.concurrent.ExecutionException
 import kotlin.math.abs
 import kotlin.math.max

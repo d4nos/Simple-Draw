@@ -1,13 +1,13 @@
-package com.simplemobiletools.draw.pro.models
+package com.draw.master.tool.models
 
 import android.app.Activity
 import android.graphics.Path
 import com.simplemobiletools.commons.extensions.toast
-import com.simplemobiletools.draw.pro.R
-import com.simplemobiletools.draw.pro.actions.Action
-import com.simplemobiletools.draw.pro.actions.Line
-import com.simplemobiletools.draw.pro.actions.Move
-import com.simplemobiletools.draw.pro.actions.Quad
+import com.draw.master.tool.R
+import com.draw.master.tool.actions.Action
+import com.draw.master.tool.actions.Line
+import com.draw.master.tool.actions.Move
+import com.draw.master.tool.actions.Quad
 import java.io.ObjectInputStream
 import java.io.Serializable
 import java.security.InvalidParameterException

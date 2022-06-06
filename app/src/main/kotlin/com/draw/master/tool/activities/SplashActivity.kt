@@ -1,9 +1,9 @@
-package com.simplemobiletools.draw.pro.activities
+package com.draw.master.tool.activities
 
 import android.content.Intent
 import android.os.Handler
 import com.simplemobiletools.commons.activities.BaseSplashActivity
-import com.simplemobiletools.draw.pro.R
+import com.draw.master.tool.R
 
 class SplashActivity : BaseSplashActivity() {
     override fun initActivity() {

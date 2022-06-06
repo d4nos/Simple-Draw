@@ -1,4 +1,4 @@
-package com.simplemobiletools.draw.pro.helpers
+package com.draw.master.tool.helpers
 
 import android.graphics.Bitmap
 import android.graphics.Color

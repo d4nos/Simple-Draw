@@ -1,9 +1,9 @@
-package com.simplemobiletools.draw.pro.helpers
+package com.draw.master.tool.helpers
 
 import android.content.Context
 import android.graphics.Color
 import com.simplemobiletools.commons.helpers.BaseConfig
-import com.simplemobiletools.draw.pro.R
+import com.draw.master.tool.R
 
 class Config(context: Context) : BaseConfig(context) {
     companion object {
