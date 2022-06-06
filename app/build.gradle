@@ -55,4 +55,6 @@ android {
 dependencies {
     implementation "androidx.print:print:1.0.0"
     implementation project(path: ':commons')
+    implementation 'com.android.billingclient:billing:4.1.0'
+    implementation 'org.greenrobot:eventbus:3.3.1'
 }

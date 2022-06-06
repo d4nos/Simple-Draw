@@ -33,6 +33,7 @@ import com.draw.master.tool.h.PNG
 import com.draw.master.tool.h.SVG
 import com.draw.master.tool.itface.CanvasListener
 import com.draw.master.tool.models.Svg
+import com.draw.master.tool.pro.ProActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -86,6 +87,7 @@ class MainActivity : SimpleActivity(), CanvasListener {
         updateBrushSize()
         stroke_width_bar.progress = brushSize.toInt()
 
+        pro.setOnClickListener { ProActivity.open(this) }
         stroke_width_preview.setOnClickListener { pickColor() }
         clear.setOnClickListener { clearCanvas() }
         undo.setOnClickListener { my_canvas.undo() }
